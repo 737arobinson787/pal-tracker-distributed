@@ -81,6 +81,9 @@ public class FlowTest {
 
         response = httpClient.post(registrationServerUrl("/registration"), jsonMapBuilder()
             .put("name", "aUser")
+                .put("EUREKA_CLIENT_ENABLED", "false")
+                //.put("RIBBON_EUREKA_ENABLED", "false")
+                .put("REGISTRATION_SERVER_ENDPOINT", "http://localhost:8883")
             .build()
         );
         long createdUserId = findResponseId(response);
@@ -96,6 +99,9 @@ public class FlowTest {
         response = httpClient.post(registrationServerUrl("/projects"), jsonMapBuilder()
             .put("accountId", createdAccountId)
             .put("name", "aProject")
+                .put("EUREKA_CLIENT_ENABLED", "false")
+                //.put("RIBBON_EUREKA_ENABLED", "false")
+                .put("REGISTRATION_SERVER_ENDPOINT", "http://localhost:8883")
             .build()
         );
         long createdProjectId = findResponseId(response);
@@ -114,6 +120,9 @@ public class FlowTest {
                 .put("userId", createdUserId)
                 .put("firstDay", "2015-05-17")
                 .put("lastDay", "2015-05-26")
+                        .put("EUREKA_CLIENT_ENABLED", "false")
+                        //.put("RIBBON_EUREKA_ENABLED", "false")
+                        .put("REGISTRATION_SERVER_ENDPOINT", "http://localhost:8883")
                 .build()
         );
 
@@ -130,6 +139,9 @@ public class FlowTest {
         response = httpClient.post(backlogServerUrl("/stories"), jsonMapBuilder()
             .put("projectId", createdProjectId)
             .put("name", "A story")
+                .put("EUREKA_CLIENT_ENABLED", "false")
+                //.put("RIBBON_EUREKA_ENABLED", "false")
+                .put("REGISTRATION_SERVER_ENDPOINT", "http://localhost:8883")
             .build()
         );
         long createdStoryId = findResponseId(response);
@@ -147,6 +159,9 @@ public class FlowTest {
             .put("userId", createdUserId)
             .put("date", "2015-12-17")
             .put("hours", 8)
+                .put("EUREKA_CLIENT_ENABLED", "false")
+                //.put("RIBBON_EUREKA_ENABLED", "false")
+                .put("REGISTRATION_SERVER_ENDPOINT", "http://localhost:8883")
             .build()
         );
         long createdTimeEntryId = findResponseId(response);
